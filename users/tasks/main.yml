@@ -1,0 +1,24 @@
+- name: Create panda group
+  group: 
+   name: panda 
+   state: present
+- name: log 
+  debug: 
+    msg: Group panda created                       
+    
+- name: Create panda user - sudo and panda groups
+  user:
+    name: panda
+    shell: /bin/bash
+    groups: 
+      - panda
+      - sudo
+- name: logs 
+  debug: 
+   msg: Panda user created    
+
+- name:  authorized key for user panda copying it from vagrant user
+  authorized_key:
+    user: panda
+    state: present
+    key: "{{ lookup('file', '/home/vagrant/.ssh/authorized_keys') }}"
