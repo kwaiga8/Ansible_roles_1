@@ -1,0 +1,3 @@
+deployment_path: "~/Infrastructure"
+git_repository: "https://github.com/kwaiga8/Ansible_roles_1.git"
+git_branch: "main"
